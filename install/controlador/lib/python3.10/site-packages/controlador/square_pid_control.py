@@ -76,11 +76,11 @@ class SquarePoseController(Node):
         cmd = Twist()
         # 1) Si no estamos alineados, giramos a ω=±0.2 rad/s
         if abs(alpha) > self.angle_tol:
-            cmd.angular.z = 0.2 * np.sign(alpha)
+            cmd.angular.z = 0.1 * np.sign(alpha)
             cmd.linear.x  = 0.0
         else:
             # 2) Ya alineados, avanzamos a v=0.3 m/s
-            cmd.linear.x  = 0.3
+            cmd.linear.x  = 0.2
             cmd.angular.z = 0.0
 
         # Publica el comando
