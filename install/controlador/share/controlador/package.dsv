@@ -1,0 +1,6 @@
+source;share/controlador/hook/pythonpath.ps1
+source;share/controlador/hook/pythonpath.dsv
+source;share/controlador/hook/pythonpath.sh
+source;share/controlador/hook/ament_prefix_path.ps1
+source;share/controlador/hook/ament_prefix_path.dsv
+source;share/controlador/hook/ament_prefix_path.sh

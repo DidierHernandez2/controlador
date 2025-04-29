@@ -1,0 +1,3 @@
+[console_scripts]
+square_pid_control = controlador.square_pid_control:main
+

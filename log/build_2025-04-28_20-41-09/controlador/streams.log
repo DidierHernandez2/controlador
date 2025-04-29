@@ -1,0 +1,37 @@
+[0.646s] Invoking command in '/home/darhf/Manchester/Week10/challenge3/controlador/src/controlador': PYTHONPATH=/home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controlador build --build-base /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/build install --record /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/install.log --single-version-externally-managed install_data
+[0.856s] running egg_info
+[0.856s] creating ../../build/controlador/controlador.egg-info
+[0.857s] writing ../../build/controlador/controlador.egg-info/PKG-INFO
+[0.857s] writing dependency_links to ../../build/controlador/controlador.egg-info/dependency_links.txt
+[0.857s] writing entry points to ../../build/controlador/controlador.egg-info/entry_points.txt
+[0.857s] writing requirements to ../../build/controlador/controlador.egg-info/requires.txt
+[0.857s] writing top-level names to ../../build/controlador/controlador.egg-info/top_level.txt
+[0.858s] writing manifest file '../../build/controlador/controlador.egg-info/SOURCES.txt'
+[0.859s] reading manifest file '../../build/controlador/controlador.egg-info/SOURCES.txt'
+[0.859s] writing manifest file '../../build/controlador/controlador.egg-info/SOURCES.txt'
+[0.859s] running build
+[0.860s] running build_py
+[0.860s] creating /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/build
+[0.860s] creating /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/build/lib
+[0.860s] creating /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/build/lib/controlador
+[0.860s] copying controlador/__init__.py -> /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/build/lib/controlador
+[0.860s] copying controlador/square_pid_control.py -> /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/build/lib/controlador
+[0.860s] running install
+[0.861s] running install_lib
+[0.861s] creating /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/lib/python3.10/site-packages/controlador
+[0.861s] copying /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/build/lib/controlador/__init__.py -> /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/lib/python3.10/site-packages/controlador
+[0.861s] copying /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/build/lib/controlador/square_pid_control.py -> /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/lib/python3.10/site-packages/controlador
+[0.862s] byte-compiling /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/lib/python3.10/site-packages/controlador/__init__.py to __init__.cpython-310.pyc
+[0.862s] byte-compiling /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/lib/python3.10/site-packages/controlador/square_pid_control.py to square_pid_control.cpython-310.pyc
+[0.863s] running install_data
+[0.863s] creating /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/share/ament_index
+[0.863s] creating /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/share/ament_index/resource_index
+[0.863s] creating /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/share/ament_index/resource_index/packages
+[0.863s] copying resource/controlador -> /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/share/ament_index/resource_index/packages
+[0.863s] copying package.xml -> /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/share/controlador
+[0.863s] running install_egg_info
+[0.865s] Copying ../../build/controlador/controlador.egg-info to /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/lib/python3.10/site-packages/controlador-0.0.0-py3.10.egg-info
+[0.866s] running install_scripts
+[0.883s] Installing square_pid_control script to /home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/lib/controlador
+[0.883s] writing list of installed files to '/home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/install.log'
+[0.912s] Invoked command in '/home/darhf/Manchester/Week10/challenge3/controlador/src/controlador' returned '0': PYTHONPATH=/home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/darhf/Manchester/Week10/challenge3/controlador/install/controlador/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/controlador build --build-base /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/build install --record /home/darhf/Manchester/Week10/challenge3/controlador/build/controlador/install.log --single-version-externally-managed install_data

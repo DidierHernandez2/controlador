@@ -1,0 +1,3 @@
+numpy
+setuptools
+transforms3d
