@@ -41,7 +41,8 @@ class SquarePoseController(Node):
 
         # Timer a 20 Hz
         self.create_timer(0.05, self.control_loop)
-        self.get_logger().info('SquarePoseController iniciado.')
+
+        self.get_logger().info('SquarePoseController iniciado (ω=0.2 rad/s, v=0.3 m/s).')
 
     def odom_cb(self, msg: Odometry):
         # Extrae pose
@@ -59,29 +60,30 @@ class SquarePoseController(Node):
 
         # Objetivo actual
         gx, gy = self.waypoints[self.wp_idx]
-        dx = gx - self.x
-        dy = gy - self.y
+        dx, dy = gx - self.x, gy - self.y
         rho   = np.hypot(dx, dy)
         alpha = normalize_angle(np.arctan2(dy, dx) - self.th)
 
         # Si estamos cerca del waypoint, cambiamos al siguiente
         if rho < self.dist_tol:
-            self.get_logger().info(f'WP {self.wp_idx} alcanzado (x={self.x:.2f}, y={self.y:.2f})')
+            self.get_logger().info(
+                f'WP {self.wp_idx} alcanzado (x={self.x:.2f}, y={self.y:.2f})')
             self.wp_idx = (self.wp_idx + 1) % len(self.waypoints)
-            # Publicamos cero para detenernos brevemente
+            # Detener el robot momentáneamente
             self.cmd_pub.publish(Twist())
             return
 
         cmd = Twist()
-        # 1) Prioridad al alineamiento: si α > tol, gira
+        # 1) Si no estamos alineados, giramos a ω=±0.2 rad/s
         if abs(alpha) > self.angle_tol:
-            cmd.angular.z = 0.3 * np.sign(alpha)
+            cmd.angular.z = 0.2 * np.sign(alpha)
             cmd.linear.x  = 0.0
         else:
-            # 2) Ya alineados, avanzamos fijo
-            cmd.linear.x  = 0.3  # 0.3 m/s
+            # 2) Ya alineados, avanzamos a v=0.3 m/s
+            cmd.linear.x  = 0.3
             cmd.angular.z = 0.0
 
+        # Publica el comando
         self.cmd_pub.publish(cmd)
 
 def main(args=None):
