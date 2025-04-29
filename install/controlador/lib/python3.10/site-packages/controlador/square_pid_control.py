@@ -16,8 +16,8 @@ class SquarePoseController(Node):
         super().__init__('square_pose_control')
 
         # Umbrales
-        self.dist_tol  = 0.05   # 5 cm de tolerancia
-        self.angle_tol = 0.1    # ~6° de tolerancia
+        self.dist_tol  = 0.01   # 5 cm de tolerancia
+        self.angle_tol = 0.05    # ~6° de tolerancia
 
         # Waypoints de un cuadrado 2×2 m
         self.waypoints = [
@@ -42,7 +42,7 @@ class SquarePoseController(Node):
         # Timer a 20 Hz
         self.create_timer(0.05, self.control_loop)
 
-        self.get_logger().info('SquarePoseController iniciado (ω=0.2 rad/s, v=0.3 m/s).')
+        self.get_logger().info('SquarePoseController iniciado (ω=0.1 rad/s, v=0.2 m/s).')
 
     def odom_cb(self, msg: Odometry):
         # Extrae pose
