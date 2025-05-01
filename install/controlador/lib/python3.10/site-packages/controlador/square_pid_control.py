@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
 
@@ -16,16 +15,20 @@ class SquarePoseController(Node):
         super().__init__('square_pose_control')
 
         # Umbrales
-        self.dist_tol  = 0.01   # 5 cm de tolerancia
-        self.angle_tol = 0.05    # ~6° de tolerancia
+        self.declare_parameter('dist_tol', 0.01)
+        self.declare_parameter('angle_tol', 0.05)
+        self.dist_tol  = self.get_parameter('dist_tol').value
+        self.angle_tol = self.get_parameter('angle_tol').value
 
-        # Waypoints de un cuadrado 2×2 m
-        self.waypoints = [
-            (2.0, 0.0),
-            (2.0, 2.0),
-            (0.0, 2.0),
-            (0.0, 0.0),
-        ]
+        # Waypoints desde parámetro (YAML)
+        default_wps = [[2.0, 0.0],
+                       [2.0, 2.0],
+                       [0.0, 2.0],
+                       [0.0, 0.0]]
+        self.declare_parameter('waypoints', default_wps)
+        raw_wps = self.get_parameter('waypoints').value
+        self.waypoints = [(float(x), float(y)) for x,y in raw_wps]
+
         self.wp_idx = 0
 
         # Pose actual
@@ -42,7 +45,10 @@ class SquarePoseController(Node):
         # Timer a 20 Hz
         self.create_timer(0.05, self.control_loop)
 
-        self.get_logger().info('SquarePoseController iniciado (ω=0.1 rad/s, v=0.2 m/s).')
+        self.get_logger().info(
+            f'SquarePoseController iniciado: dist_tol={self.dist_tol}, '
+            f'angle_tol={self.angle_tol}, ω=0.1, v=0.2, waypoints={self.waypoints}'
+        )
 
     def odom_cb(self, msg: Odometry):
         # Extrae pose
@@ -67,19 +73,20 @@ class SquarePoseController(Node):
         # Si estamos cerca del waypoint, cambiamos al siguiente
         if rho < self.dist_tol:
             self.get_logger().info(
-                f'WP {self.wp_idx} alcanzado (x={self.x:.2f}, y={self.y:.2f})')
+                f'WP {self.wp_idx} alcanzado (x={self.x:.2f}, y={self.y:.2f})'
+            )
             self.wp_idx = (self.wp_idx + 1) % len(self.waypoints)
             # Detener el robot momentáneamente
             self.cmd_pub.publish(Twist())
             return
 
         cmd = Twist()
-        # 1) Si no estamos alineados, giramos a ω=±0.2 rad/s
+        # 1) Si no estamos alineados, giramos a ω=±0.1 rad/s
         if abs(alpha) > self.angle_tol:
             cmd.angular.z = 0.1 * np.sign(alpha)
             cmd.linear.x  = 0.0
         else:
-            # 2) Ya alineados, avanzamos a v=0.3 m/s
+            # 2) Ya alineados, avanzamos a v=0.2 m/s
             cmd.linear.x  = 0.2
             cmd.angular.z = 0.0
 

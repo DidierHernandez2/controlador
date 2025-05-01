@@ -10,6 +10,7 @@ setup(
      ('share/ament_index/resource_index/packages', ['resource/controlador']),
      ('share/controlador', ['package.xml']),
      ('share/controlador/launch', ['launch/square_launch.py']),
+     ('share/controlador/config', ['config/waypoints.yaml']),
     ] ,
     install_requires=[ 'setuptools',
         'transforms3d',

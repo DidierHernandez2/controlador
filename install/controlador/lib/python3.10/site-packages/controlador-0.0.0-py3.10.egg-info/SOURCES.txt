@@ -8,6 +8,7 @@ setup.py
 ../../build/controlador/controlador.egg-info/requires.txt
 ../../build/controlador/controlador.egg-info/top_level.txt
 ../../build/controlador/controlador.egg-info/zip-safe
+config/waypoints.yaml
 controlador/__init__.py
 controlador/square_pid_control.py
 launch/square_launch.py
