@@ -1,4 +1,4 @@
-square_pose_control:
+square_pid_control:
   ros__parameters:
     waypoints:
       - [2.0, 0.0]
