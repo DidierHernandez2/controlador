@@ -1,9 +1,8 @@
-square_pid_control:
-  ros__parameters:
-    waypoints:
-      - [2.0, 0.0]
-      - [2.0, 2.0]
-      - [0.0, 2.0]
-      - [0.0, 0.0]
-    dist_tol: 0.01
-    angle_tol: 0.05
+ros__parameters:
+  waypoints:
+    - [2.0, 0.0]
+    - [2.0, 2.0]
+    - [0.0, 2.0]
+    - [0.0, 0.0]
+  dist_tol: 0.01
+  angle_tol: 0.05
